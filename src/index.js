@@ -1,8 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
+
+import "@shopmonkeyus/ui-kit/dist/styles/styles.css";
+import "@shopmonkeyus/ui-kit/dist/styles/border.css";
+import "@shopmonkeyus/ui-kit/dist/styles/colors.css";
+import "@shopmonkeyus/ui-kit/dist/styles/fonts.css";
+import "@shopmonkeyus/ui-kit/dist/styles/shadow.css";
+import "@shopmonkeyus/ui-kit/dist/styles/transition.css";
+
 import App from "./components/App";
 import reportWebVitals from "./reportWebVitals";
+
+import "./index.css";
 
 ReactDOM.render(
   <React.StrictMode>
