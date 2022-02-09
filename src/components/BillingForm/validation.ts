@@ -29,7 +29,7 @@ const billingFormSchema = object({
     canSaveInfo: boolean(),
     ccName: string().required(),
     ccNumber: number().required(),
-    ccExpiration: number().required(),
+    ccExpiration: string().required(),
     ccCvv: number().required(),
 });
 
