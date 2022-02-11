@@ -11,6 +11,7 @@ const BillingForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({
+    mode: "onBlur",
     resolver: validation,
   });
 
