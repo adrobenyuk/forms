@@ -3,7 +3,7 @@
 This repository was created as a simple example of how [React Hook Form](https://react-hook-form.com/) and Shopmonkey UI kit can be used to create forms.
 
 ## Form implementation
-In [/tree/master/src/components/Form](./tree/master/src/components/Form/Form.tsx) you will find an example of how you could use S2 UI kit component together with React hook form.
+In [/src/components/Form](./tree/master/src/components/Form/Form.tsx) you will find an example of how you could use S2 UI kit component together with React hook form.
 
 ## Validation
 We do not have a standard way of how forms should be validated on the frontend, but the frontend core team works on it.
