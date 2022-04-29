@@ -1,11 +1,10 @@
-import React from "react";
 import { useForm } from "react-hook-form";
 import { Checkbox, Radio, TextField } from "@shopmonkeyus/ui-kit";
 
 import validation from "./validation";
-import { getValidationStatus } from "./";
+import { getValidationStatus } from ".";
 
-const BillingForm = () => {
+const Form = () => {
   const {
     register,
     handleSubmit,
@@ -17,34 +16,7 @@ const BillingForm = () => {
 
   const onSubmit = <T extends unknown>(data: T) => console.log(data);
 
-  console.log({
-    BillingForm: "rendered",
-  });
-
-  const sameAddressField = register("isSameAddress");
-  const saveInfoField = register("canSaveInfo");
   const paymentField = register("payment", { required: true });
-
-  const handleSameAddressChange = React.useCallback(
-    (value: boolean, e: React.ChangeEvent<HTMLInputElement>) => {
-      sameAddressField.onChange(e);
-    },
-    [sameAddressField]
-  );
-
-  const handleSaveInfoChange = React.useCallback(
-    (value: boolean, e: React.ChangeEvent<HTMLInputElement>) => {
-      saveInfoField.onChange(e);
-    },
-    [saveInfoField]
-  );
-
-  const handlePaymentChange = React.useCallback(
-    (value: string, e: React.ChangeEvent<HTMLInputElement>) => {
-      paymentField.onChange(e);
-    },
-    [paymentField]
-  );
 
   return (
     <form className="needs-validation" onSubmit={handleSubmit(onSubmit)}>
@@ -75,11 +47,11 @@ const BillingForm = () => {
             required={true}
             label="Username"
             validationStatus={getValidationStatus(errors, "username")}
-            iconBefore={() => (
+            iconBefore={
               <span className="text-brand" style={{ lineHeight: 1 }}>
                 @
               </span>
-            )}
+            }
             errorMessage={errors.username?.message}
           />
         </div>
@@ -152,10 +124,10 @@ const BillingForm = () => {
 
       <hr className="my-4" />
 
-      <Checkbox {...sameAddressField} onChange={handleSameAddressChange}>
+      <Checkbox {...register("isSameAddress")}>
         Shipping address is the same as my billing address
       </Checkbox>
-      <Checkbox {...saveInfoField} onChange={handleSaveInfoChange}>
+      <Checkbox {...register("canSaveInfo")}>
         Save this information for next time
       </Checkbox>
 
@@ -165,21 +137,13 @@ const BillingForm = () => {
 
       <div className="my-3">
         <Radio.Group>
-          <Radio
-            {...paymentField}
-            value="credit"
-            onChange={handlePaymentChange}
-          >
+          <Radio {...paymentField} value="credit">
             Credit card
           </Radio>
-          <Radio {...paymentField} value="debit" onChange={handlePaymentChange}>
+          <Radio {...paymentField} value="debit">
             Debit card
           </Radio>
-          <Radio
-            {...paymentField}
-            value="paypal"
-            onChange={handlePaymentChange}
-          >
+          <Radio {...paymentField} value="paypal">
             PayPal
           </Radio>
         </Radio.Group>
@@ -237,4 +201,4 @@ const BillingForm = () => {
   );
 };
 
-export default BillingForm;
+export default Form;
